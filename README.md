@@ -2,7 +2,10 @@
 
 ## Supported tags
 
-* `develop`, `latest`
+* `7`, `latest`
+* `5.6`
+* `5.5`
+* `5.4`
 
 ## What is this repository
 
