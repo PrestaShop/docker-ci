@@ -2,7 +2,7 @@ language: bash
 services: docker
 
 env:
-  - VERSION=7
+  - VERSION=7.0
   - VERSION=5.4
   - VERSION=5.5
   - VERSION=5.6
@@ -12,8 +12,8 @@ install:
 
 before_script:
   - env | sort
-  - cd "images/$VERSION"
-  - image="prestashop/prestashop:${VERSION}"
+  - cd ${VERSION}
+  - image="prestashop/prestashop-git:${VERSION}"
   - image="${image//'/'/-}"
 
 script:

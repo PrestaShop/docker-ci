@@ -1,5 +1,7 @@
 # PrestaShop on Docker
 
+[![Build Status](https://travis-ci.org/PrestaShop/docker-ci.svg?branch=master)](https://travis-ci.org/PrestaShop/docker-ci)
+
 ## Supported tags
 
 * `7`, `latest`

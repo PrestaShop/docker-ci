@@ -36,10 +36,10 @@ RUN apt-get update \
 	        git \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install iconv mcrypt pdo mysql pdo_mysql mbstring soap gd
+    && docker-php-ext-install iconv mcrypt pdo pdo_mysql mbstring soap gd zip
 
 # Get PrestaShop
-ADD git clone --depth=50 --branch=develop https://github.com/PrestaShop/PrestaShop.git /var/www/html/
+RUN git clone --depth=50 --branch=develop https://github.com/PrestaShop/PrestaShop.git /var/www/html/
 COPY config_files/docker_updt_ps_domains.php /var/www/html/
 
 # Apache configuration
