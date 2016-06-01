@@ -42,6 +42,9 @@ RUN apt-get update \
 RUN git clone --depth=50 --branch=develop https://github.com/PrestaShop/PrestaShop.git /var/www/html/
 COPY config_files/docker_updt_ps_domains.php /var/www/html/
 
+# Get composer
+RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');" && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer && rm -rf /tmp/composer-setup.php
+
 # Apache configuration
 RUN a2enmod rewrite
 RUN chown www-data:www-data -R /var/www/html/
