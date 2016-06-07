@@ -51,6 +51,9 @@ COPY config_files/docker_updt_ps_domains.php /var/www/html/
 
 # Get composer
 RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');" && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer && rm -rf /tmp/composer-setup.php
+COPY config_files/config.json /root/.composer/config.json
+RUN composer global require hirak/prestissimo:^0.1
+RUN composer install --prefer-dist --no-interaction --no-progress
 
 # Apache configuration
 RUN a2enmod rewrite

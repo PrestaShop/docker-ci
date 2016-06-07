@@ -43,7 +43,7 @@ RUN apt-get update \
         git \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install iconv mcrypt opcache pdo pdo_mysql mbstring soap gd zip
+    && docker-php-ext-install iconv mcrypt pdo pdo_mysql mbstring soap gd zip
 
 # Get PrestaShop
 RUN git clone --depth=50 --branch=develop https://github.com/PrestaShop/PrestaShop.git /var/www/html/
@@ -51,6 +51,9 @@ COPY config_files/docker_updt_ps_domains.php /var/www/html/
 
 # Get composer
 RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');" && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer && rm -rf /tmp/composer-setup.php
+COPY config_files/config.json /root/.composer/config.json
+RUN composer global require hirak/prestissimo:^0.1
+RUN composer install --prefer-dist --no-interaction --no-progress
 
 # Apache configuration
 RUN a2enmod rewrite

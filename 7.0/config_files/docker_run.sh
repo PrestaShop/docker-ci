@@ -33,14 +33,14 @@ if [ ! -f ./config/settings.inc.php  ]; then
 		echo "define('_PS_HOST_MODE_', true);" >> /var/www/html/config/defines.inc.php
 	fi
 
-	if [ $PS_FOLDER_INSTALL != "install" ]; then
+	if [ $PS_FOLDER_INSTALL != "install-dev" ]; then
 		echo "\n* Renaming install folder as $PS_FOLDER_INSTALL ...";
-		mv /var/www/html/install /var/www/html/$PS_FOLDER_INSTALL/
+		mv /var/www/html/install-dev /var/www/html/$PS_FOLDER_INSTALL/
 	fi
 
-	if [ $PS_FOLDER_ADMIN != "admin" ]; then
+	if [ $PS_FOLDER_ADMIN != "admin-dev" ]; then
 		echo "\n* Renaming admin folder as $PS_FOLDER_ADMIN ...";
-		mv /var/www/html/admin /var/www/html/$PS_FOLDER_ADMIN/
+		mv /var/www/html/admin-dev /var/www/html/$PS_FOLDER_ADMIN/
 	fi
 
 	if [ $PS_HANDLE_DYNAMIC_DOMAIN = 0 ]; then
