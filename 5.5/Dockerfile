@@ -19,8 +19,8 @@ ENV PS_DEV_MODE 0
 ENV PS_HOST_MODE 0
 ENV PS_HANDLE_DYNAMIC_DOMAIN 0
 
-ENV PS_FOLDER_ADMIN admin
-ENV PS_FOLDER_INSTALL install
+ENV PS_FOLDER_ADMIN admin-dev
+ENV PS_FOLDER_INSTALL install-dev
 
 # Avoid MySQL questions during installation
 ENV DEBIAN_FRONTEND noninteractive
@@ -55,8 +55,7 @@ COPY config_files/php.ini /usr/local/etc/php/php.ini
 # Get composer
 RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');" && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer && rm -rf /tmp/composer-setup.php
 COPY config_files/config.json /root/.composer/config.json
-RUN composer global require hirak/prestissimo:^0.1
-RUN composer install --prefer-dist --no-interaction --no-progress
+RUN composer global require hirak/prestissimo:^0.1 && composer install --prefer-dist --no-interaction --no-progress && rm -rf /var/www/html/app/cache/*
 
 # Apache configuration
 RUN a2enmod rewrite

@@ -19,8 +19,8 @@ ENV PS_DEV_MODE 0
 ENV PS_HOST_MODE 0
 ENV PS_HANDLE_DYNAMIC_DOMAIN 0
 
-ENV PS_FOLDER_ADMIN admin
-ENV PS_FOLDER_INSTALL install
+ENV PS_FOLDER_ADMIN admin-dev
+ENV PS_FOLDER_INSTALL install-dev
 
 # Avoid MySQL questions during installation
 ENV DEBIAN_FRONTEND noninteractive
