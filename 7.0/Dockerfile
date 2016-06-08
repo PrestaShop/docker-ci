@@ -49,6 +49,9 @@ RUN apt-get update \
 RUN git clone --depth=50 --branch=develop https://github.com/PrestaShop/PrestaShop.git /var/www/html/
 COPY config_files/docker_updt_ps_domains.php /var/www/html/
 
+# PHP configuration
+COPY config_files/php.ini /usr/local/etc/php/php.ini
+
 # Get composer
 RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');" && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer && rm -rf /tmp/composer-setup.php
 COPY config_files/config.json /root/.composer/config.json
@@ -58,9 +61,6 @@ RUN composer install --prefer-dist --no-interaction --no-progress
 # Apache configuration
 RUN a2enmod rewrite
 RUN chown www-data:www-data -R /var/www/html/
-
-# PHP configuration
-COPY config_files/php.ini /usr/local/etc/php/
 
 # MySQL configuration
 RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
