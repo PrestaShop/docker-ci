@@ -59,6 +59,7 @@ RUN composer global require hirak/prestissimo:^0.1 && composer install --prefer-
 
 # Apache configuration
 RUN a2enmod rewrite
+RUN usermod -u 1000 www-data
 RUN chown www-data:www-data -R /var/www/html/
 
 # MySQL configuration
