@@ -15,7 +15,7 @@ ENV ADMIN_PASSWD prestashop_demo
 ENV PS_LANGUAGE en
 ENV PS_COUNTRY gb
 ENV PS_INSTALL_AUTO 0
-ENV PS_DEV_MODE 0
+ENV PS_DEV_MODE 1
 ENV PS_HOST_MODE 0
 ENV PS_HANDLE_DYNAMIC_DOMAIN 0
 
@@ -55,11 +55,11 @@ COPY config_files/php.ini /usr/local/etc/php/php.ini
 # Get composer
 RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');" && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer && rm -rf /tmp/composer-setup.php
 COPY config_files/config.json /root/.composer/config.json
-RUN composer global require hirak/prestissimo:^0.1
-RUN composer install --prefer-dist --no-interaction --no-progress
+RUN composer global require hirak/prestissimo:^0.1 && composer install --prefer-dist --no-interaction --no-progress && rm -rf /var/www/html/app/cache/*
 
 # Apache configuration
 RUN a2enmod rewrite
+RUN usermod -u 1000 www-data
 RUN chown www-data:www-data -R /var/www/html/
 
 # MySQL configuration

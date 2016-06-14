@@ -23,9 +23,9 @@ while [ $RET -ne 0 ]; do
 done
 
 if [ ! -f ./config/settings.inc.php  ]; then
-	if [ $PS_DEV_MODE -ne 0 ]; then
-		echo "\n* Enabling DEV mode ...";
-		sed -ie "s/define('_PS_MODE_DEV_', false);/define('_PS_MODE_DEV_',\ true);/g" /var/www/html/config/defines.inc.php
+	if [ $PS_DEV_MODE -e 0 ]; then
+		echo "\n* Disabling DEV mode ...";
+		sed -ie "s/define('_PS_MODE_DEV_', true);/define('_PS_MODE_DEV_',\ false);/g" /var/www/html/config/defines.inc.php
 	fi
 
 	if [ $PS_HOST_MODE -ne 0 ]; then
