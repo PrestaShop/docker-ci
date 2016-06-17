@@ -5,7 +5,7 @@ MAINTAINER Thomas Nabord <thomas.nabord@prestashop.com>
 ENV PS_VERSION 1.7.0.0
 
 ENV PS_DOMAIN prestashop.local
-ENV DB_SERVER 127.0.0.1
+ENV DB_SERVER mysql
 ENV DB_PORT 3306
 ENV DB_NAME prestashop
 ENV DB_USER root
@@ -22,11 +22,6 @@ ENV PS_HANDLE_DYNAMIC_DOMAIN 0
 ENV PS_FOLDER_ADMIN admin-dev
 ENV PS_FOLDER_INSTALL install-dev
 
-# Avoid MySQL questions during installation
-ENV DEBIAN_FRONTEND noninteractive
-RUN echo mysql-server-5.6 mysql-server/root_password password $DB_PASSWD | debconf-set-selections
-RUN echo mysql-server-5.6 mysql-server/root_password_again password $DB_PASSWD | debconf-set-selections
-
 RUN apt-get update \
 	&& apt-get install -y libmcrypt-dev \
 		libjpeg62-turbo-dev \
@@ -34,7 +29,6 @@ RUN apt-get update \
 		libfreetype6-dev \
 		libxml2-dev \
 		mysql-client \
-		mysql-server \
 		wget \
 		unzip \
         nodejs \
@@ -61,10 +55,6 @@ RUN composer global require hirak/prestissimo:^0.1 && composer install --prefer-
 RUN a2enmod rewrite
 RUN usermod -u 1000 www-data
 RUN chown www-data:www-data -R /var/www/html/
-
-# MySQL configuration
-RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
-EXPOSE 3306
 
 VOLUME /var/www/html/modules
 VOLUME /var/www/html/themes
