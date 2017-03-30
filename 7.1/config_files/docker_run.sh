@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ ! -f ./vendor/autoload.php  ]; then
+	echo "\n* Vendor autoloader not found, running composer ...";
+	composer install --no-interaction
+fi
+
 if [ ! -f ./config/settings.inc.php  ]; then
     if [ $PS_DEV_MODE = 0 ]; then
 		echo "\n* Disabling DEV mode ...";
@@ -51,9 +56,9 @@ if [ ! -f ./config/settings.inc.php  ]; then
 			--db_password=$DB_PASSWD --firstname="John" --lastname="Doe" \
 			--password=$ADMIN_PASSWD --email="$ADMIN_MAIL" --language=$PS_LANGUAGE --country=$PS_COUNTRY \
 			--newsletter=0 --send_email=0
-
-		chown www-data:www-data -R /var/www/html/
 	fi
+
+    chown www-data:www-data -R /var/www/html/
 fi
 
 echo "\n* Almost ! Starting Apache now\n";
