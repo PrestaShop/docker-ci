@@ -4,7 +4,7 @@ MAINTAINER Thomas Nabord <thomas.nabord@prestashop.com>
 
 ENV PS_VERSION 1.7.0.0
 
-ENV PS_DOMAIN prestashop.local
+ENV PS_DOMAIN <to be defined>
 ENV DB_SERVER mysql
 ENV DB_PORT 3306
 ENV DB_NAME prestashop
@@ -25,6 +25,7 @@ ENV PS_FOLDER_INSTALL install-dev
 RUN apt-get update \
 	&& apt-get install -y libmcrypt-dev \
 		libjpeg62-turbo-dev \
+		libpcre3-dev \
 		libpng12-dev \
 		libfreetype6-dev \
 		libxml2-dev \
