@@ -26,7 +26,7 @@ RUN apt-get update \
 	&& apt-get install -y libmcrypt-dev \
 		libjpeg62-turbo-dev \
 		libpcre3-dev \
-		libpng12-dev \
+		libpng-dev \
 		libfreetype6-dev \
 		libxml2-dev \
 		libicu-dev \
@@ -34,7 +34,6 @@ RUN apt-get update \
 		wget \
 		unzip \
         nodejs \
-        npm \
         curl \
         git \
     && rm -rf /var/lib/apt/lists/* \
@@ -53,7 +52,6 @@ RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php')
 COPY config_files/config.json /root/.composer/config.json
 RUN cp app/config/parameters.yml.dist app/config/parameters.yml
 RUN cp app/config/parameters.yml.dist app/config/parameters.yml \
-		&& composer global require hirak/prestissimo:^0.1 \
 		&& composer install --prefer-dist --no-interaction --no-progress \
 		&& rm -rf /var/www/html/app/cache/* app/config/parameters.yml app/config/parameters.php
 
