@@ -34,7 +34,6 @@ RUN apt-get update \
 		wget \
 		unzip \
         nodejs \
-        npm \
         curl \
         git \
     && rm -rf /var/lib/apt/lists/* \
