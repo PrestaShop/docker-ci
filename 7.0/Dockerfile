@@ -38,7 +38,7 @@ RUN apt-get update \
         git \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install iconv intl mcrypt opcache pdo pdo_mysql mbstring soap gd zip
+    && docker-php-ext-install iconv intl opcache pdo pdo_mysql mbstring soap gd zip
 
 # Get PrestaShop
 RUN git clone --depth=50 --branch=develop https://github.com/PrestaShop/PrestaShop.git /var/www/html/
