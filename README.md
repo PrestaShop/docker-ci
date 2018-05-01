@@ -4,6 +4,7 @@
 
 ## Supported tags
 
+* `7.2`
 * `7.1`
 * `7`, `latest`
 * `5.6`
