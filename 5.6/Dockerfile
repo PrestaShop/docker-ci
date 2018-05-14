@@ -17,4 +17,5 @@ RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php')
 RUN chown www-data:www-data -R /var/www/html/
 
 COPY config_files/docker_run_git.sh /tmp/
+RUN ["chmod", "+x", "/tmp/docker_run_git.sh"]
 CMD ["/tmp/docker_run_git.sh"]
