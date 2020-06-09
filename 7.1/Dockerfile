@@ -1,6 +1,6 @@
 FROM prestashop/base:7.1-apache
 
-LABEL maintainer="Thomas Nabord <thomas.nabord@prestashop.com>"
+LABEL maintainer="PrestaShop Core Team <coreteam@prestashop.com>"
 
 RUN apt-get update \
 	&& apt-get install -y curl \
