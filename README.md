@@ -4,11 +4,10 @@
 
 ## Supported tags
 
-* `7.2`
 * `7.1`
-* `7`, `latest`
-* `5.6`
-* `5.5`
+* `7.2`
+* `7.3`
+* `7.4`, `latest`
 
 ## What is this repository
 
@@ -64,8 +63,4 @@ View [license information](https://www.prestashop.com/en/osl-license) for the so
 
 ## Documentation
 
-The documentation (in English by default) is available at the following addresses:
-
-* [PrestaShop 1.6](http://doc.prestashop.com/display/PS16)
-* [PrestaShop 1.5](http://doc.prestashop.com/display/PS15)
-* [PrestaShop 1.4](http://doc.prestashop.com/display/PS14)
+The documentation (in English by default) is available at the following address [https://devdocs.prestashop.com/](https://devdocs.prestashop.com/)
