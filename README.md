@@ -4,11 +4,10 @@
 
 ## Supported tags
 
-* `7.2`
 * `7.1`
-* `7`, `latest`
-* `5.6`
-* `5.5`
+* `7.2`
+* `7.3`
+* `7.4`, `latest`
 
 ## What is this repository
 
