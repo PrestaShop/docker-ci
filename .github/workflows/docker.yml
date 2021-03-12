@@ -1,0 +1,31 @@
+name: Docker
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-versions: ['7.1', '7.2', '7.3', '7.4']
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Fetch Docker Official
+      run: git clone https://github.com/docker-library/official-images.git ~/official-images
+
+    - name: Set environment variable
+      run: echo "image=prestashop/prestashop-git:${{ matrix.php-versions }}" >> $GITHUB_ENV
+
+    - name: Docker Build
+      run: docker build -t "${{ env.image }}" .
+      working-directory: ${{ matrix.php-versions }}
+
+    - name: Docker Images
+      run: docker images
+      working-directory: ${{ matrix.php-versions }}
+
+    - name: Docker Test
+      run: ~/official-images/test/run.sh "${{ env.image }}"
+      working-directory: ${{ matrix.php-versions }}
+
