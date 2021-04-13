@@ -1,6 +1,6 @@
 # PrestaShop on Docker
 
-[![Build Status](https://travis-ci.org/PrestaShop/docker-ci.svg?branch=master)](https://travis-ci.org/PrestaShop/docker-ci)
+[![Build status](https://github.com/PrestaShop/docker-ci/actions/workflows/docker.yml/badge.svg)](https://github.com/PrestaShop/docker-ci/actions/workflows/docker.yml)
 
 ## Supported tags
 
