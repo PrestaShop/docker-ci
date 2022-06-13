@@ -8,7 +8,8 @@
 * `7.2`
 * `7.3`
 * `7.4`
-* `8.0`, `latest`
+* `8.0`
+* `8.1`, `latest`
 
 ## What is this repository
 
